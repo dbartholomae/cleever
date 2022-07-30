@@ -9,7 +9,6 @@ export const TOP = Symbol("top");
 export const BOTTOM = Symbol("bottom");
 
 export class Tableau {
-  openPlacementCount = 4;
   #cards;
   #descriptions;
 
@@ -19,7 +18,6 @@ export class Tableau {
   }
 
   placeCard(card, position) {
-    this.openPlacementCount--;
     this.#cards.set(position, card);
   }
 
