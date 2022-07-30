@@ -8,6 +8,14 @@ export class CardDeck {
   }
 
   drawCard() {
+    if (this.#wordList.length < 4) {
+      throw new TypeError(
+        `Not enough words in the word list: Need at least 4 more words, but got only ${
+          this.#wordList
+        }`
+      );
+    }
+
     return new Card([
       this.#wordList.pop(),
       this.#wordList.pop(),

@@ -7,4 +7,9 @@ describe("CardDeck", () => {
     const card = cardDeck.drawCard();
     expect(card.up).toBeDefined();
   });
+
+  it("throws an error if the word list runs out", () => {
+    const cardDeck = new CardDeck(["a", "b", "c"]);
+    expect(() => cardDeck.drawCard()).toThrow();
+  });
 });
