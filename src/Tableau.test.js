@@ -1,4 +1,10 @@
-import { Tableau, TOP_LEFT, TOP_RIGHT } from "./Tableau.js";
+import {
+  BOTTOM_LEFT,
+  BOTTOM_RIGHT,
+  Tableau,
+  TOP_LEFT,
+  TOP_RIGHT,
+} from "./Tableau.js";
 import { Card } from "./Card.js";
 
 describe("Tableau", () => {
@@ -13,17 +19,13 @@ describe("Tableau", () => {
     expect(tableau.openPlacementCount).toBe(3);
   });
 
-  it("has the card in the top left slot that was placed in the top left slot", () => {
-    const card = new Card();
-    const tableau = new Tableau();
-    tableau.placeCard(card, TOP_LEFT);
-    expect(tableau.getCard(TOP_LEFT)).toEqual(card);
-  });
-
-  it("has the card in the top right slot that was placed in the top right slot", () => {
-    const card = new Card();
-    const tableau = new Tableau();
-    tableau.placeCard(card, TOP_RIGHT);
-    expect(tableau.getCard(TOP_RIGHT)).toEqual(card);
-  });
+  it.each([TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT])(
+    "has the card in the %s slot that was placed in that slot",
+    (position) => {
+      const card = new Card();
+      const tableau = new Tableau();
+      tableau.placeCard(card, position);
+      expect(tableau.getCard(position)).toEqual(card);
+    }
+  );
 });
