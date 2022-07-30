@@ -1,4 +1,4 @@
-export const TOP_LEFT = Symbol('top-left');
+export const TOP_LEFT = Symbol("top-left");
 
 export class Tableau {
   openPlacementCount = 4;
