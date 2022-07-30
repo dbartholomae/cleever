@@ -1,15 +1,15 @@
+import { Tableau } from "./Tableau.js";
+import { Card } from "./Card.js";
 import {
   BOTTOM,
   BOTTOM_LEFT,
   BOTTOM_RIGHT,
   LEFT,
   RIGHT,
-  Tableau,
   TOP,
   TOP_LEFT,
   TOP_RIGHT,
-} from "./Tableau.js";
-import { Card } from "./Card.js";
+} from "./TableauPositions.js";
 
 describe("Tableau", () => {
   it.each([TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT])(
