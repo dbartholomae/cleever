@@ -36,4 +36,44 @@ describe("Puzzle", () => {
 
     expect(result).toEqual({ incorrectCards: [], isValid: true });
   });
+
+  it("rejects a tableau with one missing card as incorrect", () => {
+    const solutionTableau = new Tableau();
+    solutionTableau.placeCard(
+      new Card(["cat", "dog", "horse", "mouse"]),
+      TOP_LEFT
+    );
+    solutionTableau.placeCard(
+      new Card(["cat", "dog", "horse", "mouse"]),
+      TOP_RIGHT
+    );
+    solutionTableau.placeCard(
+      new Card(["cat", "dog", "horse", "mouse"]),
+      BOTTOM_LEFT
+    );
+    solutionTableau.placeCard(
+      new Card(["cat", "dog", "horse", "mouse"]),
+      BOTTOM_RIGHT
+    );
+
+    const puzzle = new Puzzle(solutionTableau);
+
+    // WHEN
+    const trialTableau = new Tableau();
+    solutionTableau.placeCard(
+      new Card(["cat", "dog", "horse", "mouse"]),
+      TOP_LEFT
+    );
+    solutionTableau.placeCard(
+      new Card(["cat", "dog", "horse", "mouse"]),
+      TOP_RIGHT
+    );
+    solutionTableau.placeCard(
+      new Card(["cat", "dog", "horse", "mouse"]),
+      BOTTOM_LEFT
+    );
+    const result = puzzle.verifyTableau(trialTableau);
+
+    expect(result.isValid).toBe(false);
+  });
 });
