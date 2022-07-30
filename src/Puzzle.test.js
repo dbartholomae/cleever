@@ -40,20 +40,28 @@ describe("Puzzle", () => {
     expect(result.isValid).toBe(false);
   });
 
-  it("rejects a tableau with the top left card incorrect as incorrect", () => {
-    const cardDeck = new GermanCardDeck();
-    const solutionTableau = new StartingTableau(cardDeck);
+  it.each([TOP_LEFT])(
+    "rejects a tableau with the %s card incorrect as incorrect",
+    (incorrectPosition) => {
+      const cardDeck = new GermanCardDeck();
+      const solutionTableau = new StartingTableau(cardDeck);
 
-    const puzzle = new Puzzle(solutionTableau);
+      const puzzle = new Puzzle(solutionTableau);
 
-    // WHEN
-    const trialTableau = new Tableau();
-    trialTableau.placeCard(new Card("a", "b", "c", "d"), TOP_LEFT);
-    trialTableau.placeCard(solutionTableau.getCard(TOP_RIGHT), TOP_RIGHT);
-    trialTableau.placeCard(solutionTableau.getCard(BOTTOM_LEFT), BOTTOM_LEFT);
-    trialTableau.placeCard(solutionTableau.getCard(BOTTOM_RIGHT), BOTTOM_RIGHT);
-    const result = puzzle.verifyTableau(trialTableau);
+      // WHEN
+      const trialTableau = new Tableau();
 
-    expect(result.isValid).toBe(false);
-  });
+      [TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT].forEach((position) => {
+        trialTableau.placeCard(
+          position === incorrectPosition
+            ? new Card("a", "b", "c", "d")
+            : solutionTableau.getCard(position),
+          position
+        );
+      });
+      const result = puzzle.verifyTableau(trialTableau);
+
+      expect(result.isValid).toBe(false);
+    }
+  );
 });
