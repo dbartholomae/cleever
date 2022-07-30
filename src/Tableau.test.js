@@ -17,13 +17,13 @@ describe("Tableau", () => {
     const card = new Card();
     const tableau = new Tableau();
     tableau.placeCard(card, TOP_LEFT);
-    expect(tableau.topLeftCard).toEqual(card);
+    expect(tableau.getCard(TOP_LEFT)).toEqual(card);
   });
 
   it("has the card in the top right slot that was placed in the top right slot", () => {
     const card = new Card();
     const tableau = new Tableau();
     tableau.placeCard(card, TOP_RIGHT);
-    expect(tableau.topRightCard).toEqual(card);
+    expect(tableau.getCard(TOP_RIGHT)).toEqual(card);
   });
 });

@@ -17,4 +17,13 @@ export class Tableau {
         return;
     }
   }
+
+  getCard(position) {
+    switch (position) {
+      case TOP_LEFT:
+        return this.topLeftCard;
+      case TOP_RIGHT:
+        return this.topRightCard;
+    }
+  }
 }
