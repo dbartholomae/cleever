@@ -1,8 +1,14 @@
 import { Puzzle } from "./Puzzle.js";
 import { Tableau } from "./Tableau.js";
-import { BOTTOM_LEFT, TOP_LEFT, TOP_RIGHT } from "./TableauPositions.js";
+import {
+  BOTTOM_LEFT,
+  BOTTOM_RIGHT,
+  TOP_LEFT,
+  TOP_RIGHT,
+} from "./TableauPositions.js";
 import { GermanCardDeck } from "./GermanCardDeck.js";
 import { StartingTableau } from "./StartingTableau.js";
+import { Card } from "./Card.js";
 
 describe("Puzzle", () => {
   it("verifies the solution tableau as correct", () => {
@@ -29,6 +35,23 @@ describe("Puzzle", () => {
     trialTableau.placeCard(solutionTableau.getCard(TOP_LEFT), TOP_LEFT);
     trialTableau.placeCard(solutionTableau.getCard(TOP_RIGHT), TOP_RIGHT);
     trialTableau.placeCard(solutionTableau.getCard(BOTTOM_LEFT), BOTTOM_LEFT);
+    const result = puzzle.verifyTableau(trialTableau);
+
+    expect(result.isValid).toBe(false);
+  });
+
+  it("rejects a tableau with three incorrect card as incorrect", () => {
+    const cardDeck = new GermanCardDeck();
+    const solutionTableau = new StartingTableau(cardDeck);
+
+    const puzzle = new Puzzle(solutionTableau);
+
+    // WHEN
+    const trialTableau = new Tableau();
+    trialTableau.placeCard(new Card("a", "b", "c", "d"), TOP_LEFT);
+    trialTableau.placeCard(new Card("a", "b", "c", "d"), TOP_RIGHT);
+    trialTableau.placeCard(new Card("a", "b", "c", "d"), BOTTOM_LEFT);
+    trialTableau.placeCard(solutionTableau.getCard(BOTTOM_RIGHT), BOTTOM_RIGHT);
     const result = puzzle.verifyTableau(trialTableau);
 
     expect(result.isValid).toBe(false);
