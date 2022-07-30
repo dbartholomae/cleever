@@ -1,30 +1,32 @@
 export class Card {
   #words;
-  #facingUp;
+  #facingUp = 0;
 
   get up() {
     return this.#words[this.#facingUp];
   }
 
+  get right() {
+    return this.#words[(this.#facingUp + 1) % 4];
+  }
+
+  get down() {
+    return this.#words[(this.#facingUp + 2) % 4];
+  }
+
+  get left() {
+    return this.#words[(this.#facingUp + 3) % 4];
+  }
+
   constructor(words) {
-    this.#facingUp = 0;
     this.#words = words;
   }
 
   rotateCounterclockwise() {
-    if (this.#facingUp === 3) {
-      this.#facingUp = 0;
-      return
-    }
-
-    this.#facingUp++;
+    this.#facingUp = (this.#facingUp + 1) % 4;
   }
 
   rotateClockwise() {
-    if (this.#facingUp === 0) {
-      this.#facingUp = 3;
-      return;
-    }
-    this.#facingUp--;
+    this.#facingUp = (this.#facingUp - 1) % 4;
   }
 }
