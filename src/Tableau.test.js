@@ -1,4 +1,4 @@
-import { Tableau, TOP_LEFT } from "./Tableau.js";
+import { Tableau, TOP_LEFT, TOP_RIGHT } from "./Tableau.js";
 import { Card } from "./Card.js";
 
 describe("Tableau", () => {
@@ -18,5 +18,12 @@ describe("Tableau", () => {
     const tableau = new Tableau();
     tableau.placeCard(card, TOP_LEFT);
     expect(tableau.topLeftCard).toEqual(card);
+  });
+
+  it("has the card in the top right slot that was placed in the top right slot", () => {
+    const card = new Card();
+    const tableau = new Tableau();
+    tableau.placeCard(card, TOP_RIGHT);
+    expect(tableau.topRightCard).toEqual(card);
   });
 });
