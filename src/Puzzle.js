@@ -8,4 +8,11 @@ export class Puzzle {
   getCards() {
     return this.#cards;
   }
+
+  verifyTableau(trialTableau) {
+    return {
+      incorrectCards: [],
+      isValid: true,
+    };
+  }
 }
