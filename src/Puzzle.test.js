@@ -9,12 +9,6 @@ import {
 } from "./TableauPositions.js";
 
 describe("Puzzle", () => {
-  it("has 5 cards", () => {
-    const cards = Array.from({ length: 5 }).map(() => new Card());
-    const puzzle = new Puzzle(cards);
-    expect(puzzle.getCards().length).toBe(5);
-  });
-
   it("verifies the solution tableau as correct", () => {
     const solutionTableau = new Tableau();
     solutionTableau.placeCard(
