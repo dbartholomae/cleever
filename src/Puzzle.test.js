@@ -1,21 +1,13 @@
 import { Puzzle } from "./Puzzle.js";
 import { Tableau } from "./Tableau.js";
-import {
-  BOTTOM_LEFT,
-  BOTTOM_RIGHT,
-  TOP_LEFT,
-  TOP_RIGHT,
-} from "./TableauPositions.js";
+import { BOTTOM_LEFT, TOP_LEFT, TOP_RIGHT } from "./TableauPositions.js";
 import { GermanCardDeck } from "./GermanCardDeck.js";
+import { StartingTableau } from "./StartingTableau.js";
 
 describe("Puzzle", () => {
   it("verifies the solution tableau as correct", () => {
     const cardDeck = new GermanCardDeck();
-    const solutionTableau = new Tableau();
-    solutionTableau.placeCard(cardDeck.drawCard(), TOP_LEFT);
-    solutionTableau.placeCard(cardDeck.drawCard(), TOP_RIGHT);
-    solutionTableau.placeCard(cardDeck.drawCard(), BOTTOM_LEFT);
-    solutionTableau.placeCard(cardDeck.drawCard(), BOTTOM_RIGHT);
+    const solutionTableau = new StartingTableau(cardDeck);
 
     const puzzle = new Puzzle(solutionTableau);
 
@@ -28,11 +20,7 @@ describe("Puzzle", () => {
 
   it("rejects a tableau with one missing card as incorrect", () => {
     const cardDeck = new GermanCardDeck();
-    const solutionTableau = new Tableau();
-    solutionTableau.placeCard(cardDeck.drawCard(), TOP_LEFT);
-    solutionTableau.placeCard(cardDeck.drawCard(), TOP_RIGHT);
-    solutionTableau.placeCard(cardDeck.drawCard(), BOTTOM_LEFT);
-    solutionTableau.placeCard(cardDeck.drawCard(), BOTTOM_RIGHT);
+    const solutionTableau = new StartingTableau(cardDeck);
 
     const puzzle = new Puzzle(solutionTableau);
 
