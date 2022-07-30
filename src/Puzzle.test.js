@@ -18,8 +18,7 @@ describe("Puzzle", () => {
     const puzzle = new Puzzle(solutionTableau);
 
     // WHEN
-    const trialTableau = solutionTableau;
-    const result = puzzle.verifyTableau(trialTableau);
+    const result = puzzle.verifyTableau(solutionTableau);
 
     expect(result).toEqual({ incorrectCards: [], isValid: true });
   });
