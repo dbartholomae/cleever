@@ -40,7 +40,7 @@ describe("Puzzle", () => {
     expect(result.isValid).toBe(false);
   });
 
-  it.each([TOP_LEFT])(
+  it.each([TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT])(
     "rejects a tableau with the %s card incorrect as incorrect",
     (incorrectPosition) => {
       const cardDeck = new GermanCardDeck();
