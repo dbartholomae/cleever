@@ -63,4 +63,28 @@ describe("Puzzle", () => {
       expect(result.isValid).toBe(false);
     }
   );
+
+  it("accepts a tableau with a different card that has the right words", () => {
+    const cardDeck = new GermanCardDeck();
+    const solutionTableau = new StartingTableau(cardDeck);
+
+    const puzzle = new Puzzle(solutionTableau);
+
+    // WHEN
+    const trialTableau = new Tableau();
+
+    for (let position of [TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT]) {
+      trialTableau.placeCard(
+        solutionTableau.getCard(position),
+        position
+      );
+    };
+
+    const card = solutionTableau.getCard(TOP_LEFT);
+    trialTableau.placeCard(new Card([card.up, card.right, card.down, card.left], TOP_LEFT));
+
+    const result = puzzle.verifyTableau(trialTableau);
+
+    expect(result.isValid).toBe(true); 
+  })
 });
