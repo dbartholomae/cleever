@@ -37,4 +37,13 @@ describe("Tableau", () => {
     tableau.placeCard(new Card(), TOP_LEFT);
     expect(tableau.isFilled()).toBe(false);
   })
+
+  it("can verify a tableau with four cards as correctly filled", () => {
+    const tableau = new Tableau();
+    tableau.placeCard(new Card(), TOP_LEFT);
+    tableau.placeCard(new Card(), TOP_RIGHT);
+    tableau.placeCard(new Card(), BOTTOM_LEFT);
+    tableau.placeCard(new Card(), BOTTOM_RIGHT);
+    expect(tableau.isFilled()).toBe(true);
+  })
 });
