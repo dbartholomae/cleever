@@ -31,12 +31,9 @@ export class Card {
   }
 
   equals(card) {
-    if (this.up === card.up &&
+    return (this.up === card.up &&
         this.right === card.right &&
         this.down == card.down && 
-        this.left == card.left) {
-          return true;
-        }
-        return false;
+        this.left == card.left)
   }
 }
