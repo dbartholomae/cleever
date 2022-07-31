@@ -43,4 +43,11 @@ describe("Card", () => {
     card.rotateClockwise();
     expect(card.up).toBe(words[0]);
   });
+
+  describe("#equals", () => {
+    it("is equal to itself", () => {
+      const card = new Card(words);
+      expect(card.equals(card)).toBe(true);
+    })
+  });
 });

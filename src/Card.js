@@ -29,4 +29,14 @@ export class Card {
   rotateClockwise() {
     this.#facingUp = (this.#facingUp - 1) % 4;
   }
+
+  equals(card) {
+    if (this.up === card.up &&
+        this.right === card.right &&
+        this.down == card.down && 
+        this.left == card.left) {
+          return true;
+        }
+        return false;
+  }
 }
