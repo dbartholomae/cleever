@@ -49,5 +49,12 @@ describe("Card", () => {
       const card = new Card(words);
       expect(card.equals(card)).toBe(true);
     })
+
+    it("doesn't accept two cards with the same words as equal if one of them is rotated", () => {
+      const card = new Card(words);
+      const cardRotated = new Card(card.up, card.right, card.down, card.left);
+      cardRotated.rotateClockwise();
+      expect(card.equals(cardRotated)).toBe(false);
+    })
   });
 });
