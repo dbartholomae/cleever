@@ -22,4 +22,9 @@ export class Tableau {
   getDescription(position) {
     return this.#descriptions.get(position);
   }
+
+  isFilled() {
+    return (this.#cards.size === 4)
+  }
+
 }

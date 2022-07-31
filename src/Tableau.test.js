@@ -31,4 +31,10 @@ describe("Tableau", () => {
       expect(tableau.getDescription(position)).toBe(description);
     }
   );
+
+  it("can verify if a tableau has missing cards", () => {
+    const tableau = new Tableau();
+    tableau.placeCard(new Card(), TOP_LEFT);
+    expect(tableau.isFilled()).toBe(false);
+  })
 });
