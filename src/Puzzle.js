@@ -13,16 +13,8 @@ export class Puzzle {
   }
 
   verifyTableau(trialTableau) {
-    if (trialTableau.getCard(TOP_LEFT) === undefined ||
-      trialTableau.getCard(TOP_RIGHT) === undefined ||
-      trialTableau.getCard(BOTTOM_LEFT) === undefined ||
-      trialTableau.getCard(BOTTOM_RIGHT) === undefined) {
-      return {
-        incorrectCards: [],
-        isValid: false,
-      };
-    }
     if (
+      trialTableau.isFilled() &&
       trialTableau.getCard(TOP_LEFT).equals(this.#solution.getCard(TOP_LEFT)) &&
       trialTableau.getCard(TOP_RIGHT).equals(this.#solution.getCard(TOP_RIGHT)) &&
         trialTableau.getCard(BOTTOM_LEFT).equals(this.#solution.getCard(BOTTOM_LEFT)) &&

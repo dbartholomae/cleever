@@ -81,7 +81,7 @@ describe("Puzzle", () => {
     };
 
     const card = solutionTableau.getCard(TOP_LEFT);
-    trialTableau.placeCard(new Card([card.up, card.right, card.down, card.left], TOP_LEFT));
+    trialTableau.placeCard(new Card([card.up, card.right, card.down, card.left]), TOP_LEFT);
 
     const result = puzzle.verifyTableau(trialTableau);
 
