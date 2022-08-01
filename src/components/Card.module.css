@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Mouse+Memoirs&display=swap');
+
+.card {
+    --rect-size: 6rem;
+    background: #8CB17D;
+    border: #DEECD9  1px solid;
+    border-radius: 1em;
+    box-shadow: 5px 5px 15px 5px #D4F0C9;
+    clip-path: polygon( evenodd,
+    -10% -10%,
+    110% -10%,
+    110% 110%,
+    -10% 110%,
+    -10% -10%,
+    calc(50% - var(--rect-size) / 2) calc(50% - var(--rect-size) / 2),
+    calc(50% + var(--rect-size) / 2) calc(50% - var(--rect-size) / 2),
+    calc(50% + var(--rect-size) / 2) calc(50% + var(--rect-size) / 2),
+    calc(50% - var(--rect-size) / 2) calc(50% + var(--rect-size) / 2),
+    calc(50% - var(--rect-size) / 2) calc(50% - var(--rect-size) / 2)
+    );
+    padding: 0.5em;
+    aspect-ratio: 1;
+    max-width: 12rem;
+    display: grid;
+    grid-template-columns: 1em auto 1em;
+    grid-template-rows: 1em auto 1em;
+    grid-template-areas:
+            ". up ."
+            "left . right"
+            ". down .";
+    font-family: "Agency FB", sans-serif;
+    font-size: 1.5rem;
+}
+
+.word {
+    justify-self: center;
+    text-align: center;
+}
+
+.up {
+    grid-area: up;
+}
+
+.down {
+    grid-area: down;
+    transform: rotate(180deg);
+}
+
+.left {
+    grid-area: left;
+    justify-self: start;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+}
+
+.right {
+    grid-area: right;
+    justify-self: end;
+    writing-mode: vertical-rl;
+}
