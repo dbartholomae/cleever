@@ -18,6 +18,9 @@ export class Card {
     return this.#words[(this.#facingUp + 3) % 4];
   }
 
+  /**
+   * @param words {[string, string, string, string]}
+   */
   constructor(words) {
     this.#words = words;
   }
@@ -31,9 +34,11 @@ export class Card {
   }
 
   equals(card) {
-    return (this.up === card.up &&
-        this.right === card.right &&
-        this.down == card.down && 
-        this.left == card.left)
+    return (
+      this.up === card.up &&
+      this.right === card.right &&
+      this.down === card.down &&
+      this.left === card.left
+    );
   }
 }
