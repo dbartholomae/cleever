@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Card as GameCard } from "../game/Card";
+import { Card as GameCard } from "../game/Card.js";
 import { Card } from "./Card.jsx";
 
 export const Default = () => (
