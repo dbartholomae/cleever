@@ -74,17 +74,17 @@ describe("Puzzle", () => {
     const trialTableau = new Tableau();
 
     for (let position of [TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT]) {
-      trialTableau.placeCard(
-        solutionTableau.getCard(position),
-        position
-      );
-    };
+      trialTableau.placeCard(solutionTableau.getCard(position), position);
+    }
 
     const card = solutionTableau.getCard(TOP_LEFT);
-    trialTableau.placeCard(new Card([card.up, card.right, card.down, card.left]), TOP_LEFT);
+    trialTableau.placeCard(
+      new Card([card.up, card.right, card.down, card.left]),
+      TOP_LEFT
+    );
 
     const result = puzzle.verifyTableau(trialTableau);
 
-    expect(result.isValid).toBe(true); 
-  })
+    expect(result.isValid).toBe(true);
+  });
 });
