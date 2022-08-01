@@ -1,4 +1,4 @@
-import wordlist from "./wordLists/german.json";
+import wordlist from "../wordLists/german.json";
 import { CardDeck } from "./CardDeck.js";
 
 describe("CardDeck", () => {
