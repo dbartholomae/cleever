@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "stories": "ladle",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
