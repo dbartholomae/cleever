@@ -1,0 +1,38 @@
+.tableau {
+    background-color: darkgreen;
+    border: #DEECD9 1px solid;
+    border-radius: 1em;
+    box-shadow: 5px 5px 15px 5px #D4F0C9;
+    max-width: 32em;
+    max-height: 32em;
+    padding: 0.5em;
+    aspect-ratio: 1;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "topleft topright"
+        "boffomleft bottomright";
+}
+
+.card {
+    justify-self: center;
+    align-self: center;
+}
+
+.topleft {
+    grid-area: topleft;
+}
+
+.topright {
+    grid-area: topright;
+}
+
+.bottomleft {
+    grid-area: bottomleft;
+}
+
+.bottomright {
+    grid-area: bottomright;
+}
